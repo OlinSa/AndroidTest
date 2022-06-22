@@ -8,6 +8,7 @@ import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
+import java.util.Enumeration;
 
 import timber.log.Timber;
 
@@ -24,6 +25,7 @@ public class EncryptionUtils {
     }
 
     private static SecurityKey getSecurityKey(Context context) {
+        Timber.d(" Build.VERSION.SDK_INT  :" + Build.VERSION.SDK_INT);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             return EncryptionKeyGenerator.generateSecretKey(getKeyStore());
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
@@ -38,6 +40,11 @@ public class EncryptionUtils {
         try {
             keyStore = KeyStore.getInstance(EncryptionKeyGenerator.ANDROID_KEY_STORE);
             keyStore.load(null);
+            Enumeration<String> aliases = keyStore.aliases();
+            while (aliases.hasMoreElements()) {
+                String alias = aliases.nextElement();
+                Timber.d("alias = " + alias);
+            }
         } catch (KeyStoreException | CertificateException | NoSuchAlgorithmException | IOException e) {
             Timber.e(e);
         }

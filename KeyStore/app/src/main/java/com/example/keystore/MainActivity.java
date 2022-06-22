@@ -13,6 +13,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Timber.plant(new Timber.DebugTree());
+
         String value = "Password/Token to be encrypted";
         String encryptedValue = EncryptionUtils.encrypt(this, value);
         Timber.d(" Encrypted Value :" + encryptedValue);
