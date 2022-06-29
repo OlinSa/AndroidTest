@@ -21,13 +21,11 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
     private final static String MIME_FORMAT = "video/avc"; //support h.264
-
+    private final boolean mIsAsync = false;
     private TextureView mCameraTexture;
     private TextureView mDecodeTexture;
-
     private VideoDecoder mVideoDecoder;
     private VideoEncoder mVideoEncoder;
-
     private Camera mCamera;
     private int mPreviewWidth;
     private int mPreviewHeight;
@@ -50,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onSurfaceTextureAvailable(@NonNull SurfaceTexture surface, int width, int height) {
             openCamera(surface, width, height);
-            mVideoEncoder = new VideoEncoder(MIME_FORMAT, mPreviewWidth, mPreviewHeight);
+            mVideoEncoder = new VideoEncoder(MIME_FORMAT, mPreviewWidth, mPreviewHeight, mIsAsync);
             mVideoEncoder.startEncoder();
         }
 
@@ -78,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onSurfaceTextureAvailable(@NonNull SurfaceTexture surface, int width, int height) {
             System.out.println("----------" + width + " ," + height);
-            mVideoDecoder = new VideoDecoder(MIME_FORMAT, new Surface(surface), mPreviewWidth, mPreviewHeight);
+            mVideoDecoder = new VideoDecoder(MIME_FORMAT, new Surface(surface), mPreviewWidth, mPreviewHeight, mIsAsync);
             mVideoDecoder.setEncoder(mVideoEncoder);
             mVideoDecoder.startDecoder();
         }
