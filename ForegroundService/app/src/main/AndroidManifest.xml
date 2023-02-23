@@ -18,8 +18,8 @@
             android:name=".MyForeGroundService"
             android:enabled="true"
             android:exported="true"
-            android:externalService="false"
-            android:isolatedProcess="false"
+            android:externalService="true"
+            android:isolatedProcess="true"
             android:process=":remote"/>
 
         <activity

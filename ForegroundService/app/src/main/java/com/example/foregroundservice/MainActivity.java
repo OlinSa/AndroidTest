@@ -26,11 +26,12 @@ public class MainActivity extends AppCompatActivity {
 
             Intent intent = new Intent(MainActivity.this, MyForeGroundService.class);
             intent.setAction(MyForeGroundService.ACTION_START_FOREGROUND_SERVICE);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                startForegroundService(intent);
-            } else {
-                startService(intent);
-            }
+            // The java.lang.SecurityException: BIND_EXTERNAL_SERVICE required error occurs when starting the external service
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                startForegroundService(intent);
+//            } else {
+//                startService(intent);
+//            }
 
             boolean bound = bindService(intent, new ServiceConnection() {
                 @Override
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onServiceDisconnected(ComponentName componentName) {
                     Log.d(TAG, "onServiceDisconnected componentName=" + componentName.getClassName());
                 }
-            }, BIND_AUTO_CREATE);
+            }, BIND_AUTO_CREATE | BIND_EXTERNAL_SERVICE);
 
         });
         Button stopServiceButton = (Button) findViewById(R.id.stop_foreground_service_button);
