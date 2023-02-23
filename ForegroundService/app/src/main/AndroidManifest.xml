@@ -18,7 +18,9 @@
             android:name=".MyForeGroundService"
             android:enabled="true"
             android:exported="true"
-            android:process=":remote"></service>
+            android:externalService="false"
+            android:isolatedProcess="false"
+            android:process=":remote"/>
 
         <activity
             android:name=".MainActivity"

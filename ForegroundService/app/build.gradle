@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.startforegroundservice'
+    namespace 'com.example.foregroundservice'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.startforegroundservice"
+        applicationId "com.example.foregroundservice"
         minSdk 30
         targetSdk 33
         versionCode 1

@@ -1,4 +1,4 @@
-package com.example.startforegroundservice;
+package com.example.foregroundservice;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -71,7 +71,7 @@ public class MyForeGroundService extends Service {
     private void startForegroundService() {
         Log.d(TAG, "Start foreground service.");
 
-        String CHANNEL_ONE_ID = "com.example.startforegroundservice";
+        String CHANNEL_ONE_ID = "com.example.foregroundservice";
         String CHANNEL_ONE_NAME = "CHANNEL_ONE_ID";
         NotificationChannel notificationChannel;
         //进行8.0的判断

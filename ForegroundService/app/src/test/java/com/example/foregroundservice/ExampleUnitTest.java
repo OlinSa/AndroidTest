@@ -1,4 +1,4 @@
-package com.example.startforegroundservice;
+package com.example.foregroundservice;
 
 import static org.junit.Assert.assertEquals;
 

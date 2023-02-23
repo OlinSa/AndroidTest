@@ -1,4 +1,4 @@
-package com.example.startforegroundservice;
+package com.example.foregroundservice;
 
 import static org.junit.Assert.assertEquals;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.startforegroundservice", appContext.getPackageName());
+        assertEquals("com.example.foregroundservice", appContext.getPackageName());
     }
 }

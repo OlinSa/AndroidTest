@@ -1,4 +1,4 @@
-package com.example.startforegroundservice;
+package com.example.foregroundservice;
 
 import android.content.ComponentName;
 import android.content.Intent;
@@ -57,11 +57,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, MyForeGroundService.class);
             intent.setAction(MyForeGroundService.ACTION_STOP_FOREGROUND_SERVICE);
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                startForegroundService(intent);
-            } else {
-                stopService(intent);
-            }
+            stopService(intent);
         });
     }
 }
