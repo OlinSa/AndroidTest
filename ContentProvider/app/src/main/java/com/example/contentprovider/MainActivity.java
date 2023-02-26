@@ -2,8 +2,10 @@ package com.example.contentprovider;
 
 import android.content.ContentResolver;
 import android.content.ContentValues;
+import android.database.ContentObserver;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -21,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
         TextView message = findViewById(R.id.message);
         mContentResolver = getContentResolver();
+        mContentResolver.registerContentObserver(Constant.CONTENT_URI, true, new PersonObserver(new Handler()));
+
         message.setText("Add initial data");
 
         for (int i = 0; i < 10; i++) {
@@ -35,6 +39,18 @@ public class MainActivity extends AppCompatActivity {
         while (cursor.moveToNext()) {
             String s = cursor.getString(cursor.getColumnIndex(Constant.COLUMN_NAME));
             Log.i(TAG, "i=" + (++i) + " data= " + s);
+        }
+
+    }
+
+    public class PersonObserver extends ContentObserver {
+        public PersonObserver(Handler handler) {
+            super(handler);
+        }
+
+        public void onChange(boolean selfChange) {
+            //to do something
+            Log.d(TAG, "content uri = " + Constant.CONTENT_URI + " is changed");
         }
     }
 }
