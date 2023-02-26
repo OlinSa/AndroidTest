@@ -19,8 +19,8 @@ public class MainActivity extends AppCompatActivity {
         Button button = findViewById(R.id.jump_second_activity);
         button.setOnClickListener(v -> {
             Toast.makeText(getApplicationContext(), "you click jump_second_activity", Toast.LENGTH_SHORT).show();
-//            Intent intent = new Intent(MainActivity.this, SecondActivity.class); //Explicitly intent
-            Intent intent = new Intent();
+//            Intent intent = new Intent(MainActivity.this, SecondActivity.class); //显式Intent
+            Intent intent = new Intent(); //隐式Intent不指明目标组件的class，只定义希望的Action及Data等相关信息，由系统决定使用哪个目标组件
             intent.setAction("android.intent.action.ACTION_START");
             intent.addCategory("android.intent.action.MY_CATEGORY");
 //            intent.addCategory("android.intent.category.DEFAULT");
