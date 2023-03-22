@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         surfaceView = findViewById(R.id.surface_view2);
-        mParent = findViewById(R.id.surface_view_layout);
+        mParent = findViewById(R.id.surface_view_layout2);
 
         surfaceView.getHolder().setKeepScreenOn(true);
         surfaceView.setZOrderOnTop(true);

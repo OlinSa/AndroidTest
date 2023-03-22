@@ -3,24 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <RelativeLayout
         android:id="@+id/surface_view_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="200dp">
         <SurfaceView
             android:id="@+id/surface_view"
             android:background="@color/teal_700"
             android:layout_width="match_parent"
-            android:layout_height="200dp" />
+            android:layout_height="match_parent" />
+    </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/surface_view_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
         <SurfaceView
-            android:layout_marginTop="100dp"
             android:id="@+id/surface_view2"
             android:background="@color/purple_700"
             android:layout_width="match_parent"
-            android:layout_height="200dp" />
+            android:layout_height="match_parent" />
     </RelativeLayout>
 </LinearLayout>
