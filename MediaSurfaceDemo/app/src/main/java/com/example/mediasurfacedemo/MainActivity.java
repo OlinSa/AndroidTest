@@ -1,6 +1,7 @@
 package com.example.mediasurfacedemo;
 
 import android.content.pm.ActivityInfo;
+import android.graphics.PixelFormat;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -31,10 +32,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        surfaceView = findViewById(R.id.surface_view);
+        surfaceView = findViewById(R.id.surface_view2);
         mParent = findViewById(R.id.surface_view_layout);
 
         surfaceView.getHolder().setKeepScreenOn(true);
+        surfaceView.setZOrderOnTop(true);
+        surfaceView.getHolder().setFormat(PixelFormat.TRANSLUCENT);
+
         handlerThread.start();
         mHandler = new Handler(handlerThread.getLooper());
 
