@@ -2,6 +2,7 @@ package com.example.reflection;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -33,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
         PackageManager pm = getApplicationContext().getPackageManager();
         List<ResolveInfo> resolveInfoList = pm.queryIntentActivities(intent, PackageManager.MATCH_ALL);
         dummpResolveInfo(resolveInfoList);
+        if (!resolveInfoList.isEmpty()) {
+            launchActivityFromResolveInfo(resolveInfoList.get(0));
+        }
     }
 
     private void dummpResolveInfo(List<ResolveInfo> resolveInfos) {
@@ -49,9 +53,14 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "apkPath=" + apkPath);
             Log.d(TAG, "dexOutputDir=" + dexOutputDir);
             Log.d(TAG, "calssLoader=" + calssLoader);
-
         }
     }
 
-
+    private void launchActivityFromResolveInfo(ResolveInfo resolveInfo) {
+        Intent intent = new Intent();
+        ComponentName componentName = new ComponentName(resolveInfo.activityInfo.packageName, resolveInfo.activityInfo.name);
+        intent.setComponent(componentName);
+        Log.d(TAG, "startActivity " + intent);
+        startActivity(intent);
+    }
 }
